@@ -1,22 +1,22 @@
-import { Board } from "src/app/features/board"
-import { NextBlock } from "src/app/features/nextBlock"
-import { ScoreBoard } from "src/app/features/scoreBoard"
-import { MessagePopup } from "src/app/features/messagePopup"
+import { useAtom } from "jotai"
+import { GameOver } from "src/app/features/gameOver"
+import { gameStateAtom } from "src/app/features/gameOver/states"
+import { Layout } from "src/app/features/layout"
+import { GameStateType } from "src/app/features/gameOver/types"
 
-const Layout = () => {
+const Game = () => {
+  const [gameState] = useAtom(gameStateAtom)
+  const board = (() => {
+    switch (gameState) {
+      case GameStateType.ONGOING: return <Layout />
+      case GameStateType.GAMEOVER: return <GameOver />
+    }
+  })()
+  // when game is paused have like an overlay over the game
   return (
     <div className="flex justify-center content-center flex-wrap w-screen h-screen">
-      <MessagePopup />
-      <div className="w-32 flex flex-col justify-between mr-2">
-        <div className="w-32 h-32 bg-gray-300"></div>
-        <div className="w-32 h-32 bg-gray-600"></div>
-      </div>
-      <Board />
-      <div className="w-32 flex flex-col justify-between ml-2">
-        <NextBlock />
-        <ScoreBoard />
-      </div>
+      {board}
     </div>
   )
 }
-export default Layout
+export default Game 

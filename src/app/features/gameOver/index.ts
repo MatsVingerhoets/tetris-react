@@ -1,0 +1,1 @@
+export { default as GameOver } from "./components/GameOver"

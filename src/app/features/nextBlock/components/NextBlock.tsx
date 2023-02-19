@@ -1,4 +1,12 @@
+import GridSquare from "../../board/components/GridSquare"
+
 const NextBlock = () => {
-  return <div className="w-32 h-64 bg-gray-300"></div>
+  const box = Array(4).fill(Array(4).fill(0))
+  const grid = box.map((rowArray: number[], rowIndex) => {
+    return rowArray.map((square, colIndex) => {
+      return <GridSquare key={`${rowIndex}${colIndex}`} color={square} />
+    })
+  })
+  return <div className="w-28 grid grid-cols-4">{grid}</div>
 }
 export default NextBlock

@@ -1,0 +1,1 @@
+export enum GameStateType { ONGOING = "ongoing", PAUSED = "paused", GAMEOVER = "gameover" }
