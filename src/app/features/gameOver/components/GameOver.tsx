@@ -1,11 +1,13 @@
 import { useAtom } from "jotai"
-import { gameOverAtom } from "../states"
+import { gameStateAtom } from "../states"
+import { GameStateType } from "../types"
 
 const GameOver = () => {
-    const [, setGameOver] = useAtom(gameOverAtom)
+    const [, setGameState] = useAtom(gameStateAtom)
     const startGame = () => {
-        setGameOver(false)
+        setGameState(GameStateType.ONGOING)
     }
+
     return (
         <button className="w-64 h-32 bg-gray-900 text-white rounded text-2xl" onClick={startGame}>Start Game</button>
     )
