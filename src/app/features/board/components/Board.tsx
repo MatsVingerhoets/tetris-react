@@ -1,17 +1,27 @@
-import GridSquare from "./GridSquare"
+import BoardCell from "./BoardCell"
 
-const Board = () => {
-  const grid: JSX.Element[][] = []
-  for (let row = 0; row < 18; row++) {
-    grid.push([])
-    for (let col = 0; col < 10; col++) {
-      grid[row].push(<GridSquare key={`${col}${row}`} color={1} />)
+type Props = {
+  board: {
+    rows: {
+      occupied: boolean,
+      className: string
+    }[][],
+    size: {
+      rows: number,
+      columns: number
     }
   }
+}
+const Board = ({ board }: Props) => {
+  console.log({ board })
   return (
     <div className="w-fit">
-      <div className="grid grid-cols-10 gap-0">
-        {grid}
+      <div className={`grid grid-cols-${board.size.columns} bg-gray-900 grid-rows-${board.size.rows} gap-px border-solid border-x-2 border-b-2 border-white`}>
+        {board.rows.map((row, y) => (
+          row.map((cell, x) => (
+            <BoardCell key={x * board.size.columns} cell={cell} />
+          ))
+        ))}
       </div>
     </div>
   )
