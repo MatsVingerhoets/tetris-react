@@ -89,3 +89,17 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+@layer utilities {
+  .border-bottom-left-clip {
+    clip-path: polygon(
+      30% 0%,
+      70% 0%,
+      100% 0,
+      100% 70%,
+      100% 100%,
+      10% 100%,
+      0 90%,
+      0 0
+    );
+  }
+}

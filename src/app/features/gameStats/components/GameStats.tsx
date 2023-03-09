@@ -1,4 +1,4 @@
-const ScoreBoard = () => {
+const GameStats = () => {
   return (
     <div className="h-32 bg-gray-300">
       <h1>Level: {"level placeholder"}</h1>
@@ -6,4 +6,4 @@ const ScoreBoard = () => {
     </div>
   )
 }
-export default ScoreBoard
+export default GameStats
