@@ -1,12 +1,12 @@
 import { memo } from "react"
 import GridSquare from "../../board/components/defaultCell"
 import { Preview } from "src/app/features/Preview"
-import { Shape } from "src/tetrominoes"
+import { Shape, SHAPES } from "src/tetrominoes"
 
 type Props = {
   tetrominoes: {
     shape: Shape,
-    className: string
+    shapeName: SHAPES | undefined
   }[]
 }
 const NextBlocks = ({ tetrominoes }: Props) => {

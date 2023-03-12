@@ -3,13 +3,27 @@ const className = "tetromino"
 export type Shape = number[][]
 export type Tetromino = {
   shape: Shape,
-  className: string
+  shapeName: SHAPES
 }
 
 export type Tetrominoes = {
   [key: string]: Tetromino
 }
+export enum SHAPES {
+  i = "i",
+  j = "j",
+  l = "l",
+  o = "o",
+  s = "s",
+  z = "z",
+  t = "t"
+}
 
+export enum GameStatus {
+  STARTED = "started",
+  PAUSED = "paused",
+  FINISHED = "finished"
+}
 export const TETROMINOES: Tetrominoes = {
   I: {
     shape: [
@@ -18,7 +32,7 @@ export const TETROMINOES: Tetrominoes = {
       [0, 1, 0, 0],
       [0, 1, 0, 0]
     ],
-    className: `${className} ${className}__i`
+    shapeName: SHAPES.i
   },
   J: {
     shape: [
@@ -26,7 +40,7 @@ export const TETROMINOES: Tetrominoes = {
       [0, 1, 0],
       [1, 1, 0]
     ],
-    className: `${className} ${className}__j`
+    shapeName: SHAPES.j
   },
   L: {
     shape: [
@@ -34,14 +48,14 @@ export const TETROMINOES: Tetrominoes = {
       [0, 1, 0],
       [0, 1, 1]
     ],
-    className: `${className} ${className}__l`
+    shapeName: SHAPES.l
   },
   O: {
     shape: [
       [1, 1],
       [1, 1]
     ],
-    className: `${className} ${className}__o`
+    shapeName: SHAPES.o
   },
   S: {
     shape: [
@@ -49,7 +63,7 @@ export const TETROMINOES: Tetrominoes = {
       [1, 1, 0],
       [0, 0, 0]
     ],
-    className: `${className} ${className}__s`
+    shapeName: SHAPES.s
   },
   T: {
     shape: [
@@ -57,7 +71,7 @@ export const TETROMINOES: Tetrominoes = {
       [0, 1, 0],
       [0, 0, 0]
     ],
-    className: `${className} ${className}__t`
+    shapeName: SHAPES.t
   },
   Z: {
     shape: [
@@ -65,6 +79,6 @@ export const TETROMINOES: Tetrominoes = {
       [0, 1, 1],
       [0, 0, 0]
     ],
-    className: `${className} ${className}__z`
+    shapeName: SHAPES.z
   }
 };

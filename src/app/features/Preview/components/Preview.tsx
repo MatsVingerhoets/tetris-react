@@ -1,17 +1,17 @@
 import { buildBoard } from "src/app/features/board/utils"
-import { Shape } from "src/tetrominoes"
+import { Shape, SHAPES } from "src/tetrominoes"
 import BoardCell from "../../board/components/BoardCell"
 import { transferToBoard } from "../utils"
 
 type Props = {
-  tetromino: { shape: Shape, className: string }
+  tetromino: { shape: Shape, shapeName: SHAPES | undefined }
   index: number
 }
 const Preview = ({ tetromino, index }: Props) => {
-  const { shape, className } = tetromino
+  const { shape, shapeName } = tetromino
   const board = buildBoard({ rows: 4, columns: 4 })
   board.rows = transferToBoard({
-    className,
+    shapeName,
     isOccupied: false,
     position: { row: 0, column: 0 },
     rows: board.rows,
