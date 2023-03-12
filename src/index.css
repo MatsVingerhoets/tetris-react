@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html,
 body,
 div,
@@ -89,17 +90,50 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 @layer utilities {
   .border-bottom-left-clip {
-    clip-path: polygon(
-      30% 0%,
-      70% 0%,
-      100% 0,
-      100% 70%,
-      100% 100%,
-      10% 100%,
-      0 90%,
-      0 0
-    );
+    clip-path: polygon(30% 0%,
+        70% 0%,
+        100% 0,
+        100% 70%,
+        100% 100%,
+        10% 100%,
+        0 90%,
+        0 0);
+  }
+
+  .border-bottom-right-clip {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 100% 96%, 91% 100%, 0 100%, 0 100%, 0 0);
+  }
+}
+
+@layer components {
+  .tetromino__i {
+    background-color: rgba(80, 227, 230, 1);
+  }
+
+  .tetromino__j {
+    background-color: rgba(36, 95, 223, 1);
+  }
+
+  .tetromino__l {
+    background-color: rgba(223, 173, 36, 1);
+  }
+
+  .tetromino__o {
+    background-color: rgba(223, 217, 36, 1);
+  }
+
+  .tetromino__s {
+    background-color: rgba(48, 211, 56, 1);
+  }
+
+  .tetromino__t {
+    background-color: rgba(132, 61, 198, 1);
+  }
+
+  .tetromino__z {
+    background-color: rgba(240, 80, 195, 1);
   }
 }
