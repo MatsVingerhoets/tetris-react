@@ -14,8 +14,15 @@ type Props = {
 }
 const Layout = ({ rows, columns }: Props) => {
   const [gameStats, addLinesCleared] = useGameStats()
-  const { board, setBoard } = useBoard({ rows, columns })
   const [player] = useAtom(playerAtom)
+  const { resetPlayer } = usePlayer()
+  const { board } = useBoard({
+    rows,
+    columns,
+    player,
+    resetPlayer,
+    addLinesCleared
+  })
   console.log(player)
   return (
     <>

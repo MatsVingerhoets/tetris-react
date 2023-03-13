@@ -2,7 +2,7 @@ const className = "tetromino"
 
 export type Shape = number[][]
 export type Tetromino = {
-  shape: Shape,
+  shape: Shape
   shapeName: SHAPES
 }
 
@@ -27,10 +27,10 @@ export enum GameStatus {
 export const TETROMINOES: Tetrominoes = {
   I: {
     shape: [
-      [0, 1, 0, 0],
-      [0, 1, 0, 0],
-      [0, 1, 0, 0],
-      [0, 1, 0, 0]
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [1, 1, 1, 1],
+      [0, 0, 0, 0]
     ],
     shapeName: SHAPES.i
   },
@@ -81,4 +81,4 @@ export const TETROMINOES: Tetrominoes = {
     ],
     shapeName: SHAPES.z
   }
-};
+}

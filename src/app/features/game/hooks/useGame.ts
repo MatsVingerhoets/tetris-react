@@ -10,5 +10,5 @@ export const usePlayer = () => {
     setPlayer(buildPlayer(player))
   }, [])
 
-  return resetPlayer
+  return { resetPlayer }
 }

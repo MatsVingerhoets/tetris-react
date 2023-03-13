@@ -4,7 +4,7 @@ import BoardCell from "../../board/components/BoardCell"
 import { transferToBoard } from "../utils"
 
 type Props = {
-  tetromino: { shape: Shape, shapeName: SHAPES | undefined }
+  tetromino: { shape: Shape; shapeName: SHAPES | undefined }
   index: number
 }
 const Preview = ({ tetromino, index }: Props) => {
@@ -18,12 +18,11 @@ const Preview = ({ tetromino, index }: Props) => {
     shape
   })
   return (
-    <div className="grid gap-1 grid-rows-4 grid-cols-4 bg-red-900">
-      {board.rows.map((row, y) => (
+    <div className="grid gap-px ml-7 justify-center grid-rows-4 grid-cols-4">
+      {board.rows.map((row, y) =>
         row.map((cell, x) => (
           <BoardCell key={x * board.size.columns + x} cell={cell} />
         ))
-      )
       )}
     </div>
   )
