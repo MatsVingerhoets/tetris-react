@@ -16,6 +16,7 @@ export const useBoard = ({
   resetPlayer,
   addLinesCleared
 }: Props) => {
+  console.log(player)
   const [board, setBoard] = useState(buildBoard({ rows, columns }))
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import { buildBoard } from "src/app/features/board/utils"
 import { Shape, SHAPES } from "src/tetrominoes"
 import BoardCell from "../../board/components/BoardCell"
+import { StyledGridContainer } from "./styles/styles"
 import { transferToBoard } from "../utils"
 
 type Props = {
@@ -18,13 +19,13 @@ const Preview = ({ tetromino, index }: Props) => {
     shape
   })
   return (
-    <div className="grid gap-px ml-7 justify-center grid-rows-4 grid-cols-4">
+    <StyledGridContainer className="grid gap-px ml-7 w-auto grid-rows-4 grid-cols-4">
       {board.rows.map((row, y) =>
         row.map((cell, x) => (
           <BoardCell key={x * board.size.columns + x} cell={cell} />
         ))
       )}
-    </div>
+    </StyledGridContainer>
   )
 }
 export default Preview

@@ -23,7 +23,6 @@ const Layout = ({ rows, columns }: Props) => {
     resetPlayer,
     addLinesCleared
   })
-  console.log(player)
   return (
     <>
       <div className="w-32 flex flex-col justify-between">
@@ -31,7 +30,7 @@ const Layout = ({ rows, columns }: Props) => {
         <GameStats gameStats={gameStats} />
       </div>
       <Board board={board} />
-      <div className="w-32 flex flex-col justify-between">
+      <div className="flex flex-col justify-between">
         <NextBlocks tetrominoes={player.tetrominoes} />
       </div>
     </>

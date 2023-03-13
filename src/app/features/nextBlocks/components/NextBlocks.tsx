@@ -18,7 +18,7 @@ const NextBlocks = ({ tetrominoes }: Props) => {
           <Preview tetromino={tetromino} index={index} key={index} />
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 export default memo(NextBlocks)

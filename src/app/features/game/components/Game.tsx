@@ -9,7 +9,7 @@ const Game = () => {
   const [gameState] = useAtom(gameStateAtom)
   const [player, setPlayer] = useAtom(playerAtom)
 
-  const board = (() => {
+  const game = (() => {
     switch (gameState) {
       case GameStateType.ONGOING: return <Layout rows={18} columns={10} />
       case GameStateType.GAMEOVER: return <GameOver />
@@ -18,7 +18,7 @@ const Game = () => {
   // when game is paused have like an overlay over the game
   return (
     <div className="flex bg-blue-800 justify-center content-center flex-wrap w-screen h-screen">
-      {board}
+      {game}
     </div>
   )
 }
