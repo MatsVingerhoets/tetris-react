@@ -109,6 +109,11 @@ video {
 }
 
 @layer components {
+  .hidden_input {
+    position: absolute;
+    top: -100em;
+  }
+
   .tetromino__i {
     background-color: rgba(80, 227, 230, 1);
   }

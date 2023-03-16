@@ -6,7 +6,7 @@ import { gameStateAtom } from "../../gameOver/states"
 import { GameStateType } from "../../gameOver/types"
 import { GameStatsType } from "../../gameStats/types"
 import { Action } from "../types"
-import { actionForKey, Controls } from "../utils"
+import { actionForKey, Controls, playerController } from "../utils"
 
 type Props = {
   board: BoardType
@@ -24,11 +24,19 @@ const GameController = ({ board, gameStats }: Props) => {
     }
   }
   const onkeydown = ({ code }: KeyboardEvent<HTMLInputElement>) => {
-    console.log(`onKeyDown ${code}`)
+    const typedActionString = code as keyof typeof Controls
+    const action = actionForKey(typedActionString)
+    handleInput({ action })
+  }
+
+  const handleInput = ({ action }) => {
+    playerController({
+      action, board, player, setPlayer, setGameState
+    })
   }
   return (
     <input
-      className="w-32 h-12"
+      className="w-32 h-12 hidden_input"
       type="text"
       onKeyDown={onkeydown}
       onKeyUp={onKeyUp}

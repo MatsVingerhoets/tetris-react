@@ -1,6 +1,6 @@
 import { Shape, ShapeNames, Tetromino, TETROMINOES } from "src/tetrominoes"
 
-type Props = {
+type TransferToBoardProps = {
   shapeName: ShapeNames | undefined
   isOccupied: boolean
   position: {
@@ -20,7 +20,7 @@ export const transferToBoard = ({
   position,
   rows,
   shape
-}: Props) => {
+}: TransferToBoardProps) => {
   shape.forEach((row, y) => {
     row.forEach((cell, x) => {
       if (cell) {
@@ -40,3 +40,4 @@ export const randomTetromino = (): Tetromino => {
   const key = keys[index]
   return TETROMINOES[key]
 }
+
