@@ -1,20 +1,26 @@
-import { Shape, SHAPES, Tetromino, TETROMINOES } from "src/tetrominoes"
+import { Shape, ShapeNames, Tetromino, TETROMINOES } from "src/tetrominoes"
 
 type Props = {
-  shapeName: SHAPES | undefined,
+  shapeName: ShapeNames | undefined
   isOccupied: boolean
   position: {
-    row: number,
+    row: number
     column: number
   }
   rows: {
     occupied: boolean
-    shapeName: SHAPES | undefined
-  }[][],
+    shapeName: ShapeNames | undefined
+  }[][]
   shape: Shape
 }
 
-export const transferToBoard = ({ shapeName, isOccupied, position, rows, shape }: Props) => {
+export const transferToBoard = ({
+  shapeName,
+  isOccupied,
+  position,
+  rows,
+  shape
+}: Props) => {
   shape.forEach((row, y) => {
     row.forEach((cell, x) => {
       if (cell) {

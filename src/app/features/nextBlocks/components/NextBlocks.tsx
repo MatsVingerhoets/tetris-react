@@ -1,12 +1,11 @@
 import { memo } from "react"
-import GridSquare from "../../board/components/defaultCell"
 import { Preview } from "src/app/features/Preview"
-import { Shape, SHAPES } from "src/tetrominoes"
+import { Shape, ShapeNames } from "src/tetrominoes"
 
 type Props = {
   tetrominoes: {
     shape: Shape
-    shapeName: SHAPES | undefined
+    shapeName: ShapeNames | undefined
   }[]
 }
 const NextBlocks = ({ tetrominoes }: Props) => {
@@ -18,7 +17,7 @@ const NextBlocks = ({ tetrominoes }: Props) => {
           <Preview tetromino={tetromino} index={index} key={index} />
         ))}
       </div>
-    </div >
+    </div>
   )
 }
 export default memo(NextBlocks)

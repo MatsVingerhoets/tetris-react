@@ -12,9 +12,8 @@ import { GameController } from "src/app/features/gameController"
 type Props = {
   rows: number
   columns: number
-  setGameOver: () => void
 }
-const Layout = ({ rows, columns, setGameOver }: Props) => {
+const Layout = ({ rows, columns }: Props) => {
   const [gameStats, addLinesCleared] = useGameStats()
   const [player] = useAtom(playerAtom)
   const { resetPlayer } = usePlayer()
@@ -38,11 +37,7 @@ const Layout = ({ rows, columns, setGameOver }: Props) => {
         </div>
       </div>
       <div className="flex mt-2 justify-center">
-        <GameController
-          board={board}
-          gameStats={gameStats}
-          setGameOver={setGameOver}
-        />
+        <GameController board={board} gameStats={gameStats} />
       </div>
     </>
   )

@@ -1,13 +1,14 @@
 import { buildBoard } from "src/app/features/board/utils"
-import { Shape, SHAPES } from "src/tetrominoes"
+import { Shape, ShapeNames } from "src/tetrominoes"
 import BoardCell from "../../board/components/BoardCell"
 import { StyledGridContainer } from "./styles/styles"
 import { transferToBoard } from "../utils"
 
 type Props = {
-  tetromino: { shape: Shape; shapeName: SHAPES | undefined }
+  tetromino: { shape: Shape; shapeName: ShapeNames | undefined }
   index: number
 }
+
 const Preview = ({ tetromino, index }: Props) => {
   const { shape, shapeName } = tetromino
   const board = buildBoard({ rows: 4, columns: 4 })

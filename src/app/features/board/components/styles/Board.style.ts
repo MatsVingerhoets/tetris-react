@@ -1,4 +1,4 @@
-import { SHAPES } from "src/tetrominoes";
+import { ShapeNames } from "src/tetrominoes"
 import styled from "styled-components"
 
 export const StyledContainer = styled.div<{ rows: number; cols: number }>`
@@ -6,24 +6,24 @@ export const StyledContainer = styled.div<{ rows: number; cols: number }>`
   grid-template-rows: ${({ rows }) => `repeat(${rows}, minmax(0 ,1fr))`};
 `
 
-export const StyledCell = styled.div<{ tetromino: SHAPES | undefined }>`
-background-color: ${({ tetromino }) => getCellColor(tetromino)}
+export const StyledCell = styled.div<{ tetromino: ShapeNames | undefined }>`
+  background-color: ${({ tetromino }) => getCellColor(tetromino)};
 `
-const getCellColor = (tetromino: SHAPES | undefined) => {
+const getCellColor = (tetromino: ShapeNames | undefined) => {
   switch (tetromino) {
-    case SHAPES.i:
+    case ShapeNames.I:
       return "rgba(80, 227, 230, 1);"
-    case SHAPES.j:
+    case ShapeNames.J:
       return "rgba(36, 95, 223, 1);"
-    case SHAPES.t:
+    case ShapeNames.T:
       return "rgba(132, 61, 198, 1);"
-    case SHAPES.l:
+    case ShapeNames.L:
       return "rgba(223, 173, 36, 1);"
-    case SHAPES.o:
+    case ShapeNames.O:
       return "rgba(223, 217, 36, 1);"
-    case SHAPES.s:
+    case ShapeNames.S:
       return "rgba(48, 211, 56, 1);"
-    case SHAPES.z:
+    case ShapeNames.Z:
       return "rgba(240, 80, 195, 1);"
     default:
       return "rgb(0 0 0 / 0.9);"

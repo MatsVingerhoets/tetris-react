@@ -1,33 +1,25 @@
-import { SHAPES } from "src/tetrominoes"
+import { ShapeNames } from "src/tetrominoes"
 import { Player } from "src/app/features/game/states"
 import defaultCell from "./components/defaultCell"
 import { transferToBoard } from "../Preview/utils"
+import { BoardType } from "./types"
 
 type buildBoardProps = {
   rows: number
   columns: number
 }
 type nextBoardProps = {
-  board: {
-    rows: {
-      occupied: boolean
-      shapeName: undefined | SHAPES
-    }[][]
-    size: {
-      rows: number
-      columns: number
-    }
-  }
+  board: BoardType
   player: Player
   resetPlayer: () => void
   addLinesCleared: () => void
 }
 
 export const buildBoard = ({ rows, columns }: buildBoardProps) => {
-  const builtRows = <{ occupied: boolean; shapeName: undefined | SHAPES }[][]>(
-    Array.from({ length: rows }, () =>
-      Array.from({ length: columns }, () => ({ ...defaultCell }))
-    )
+  const builtRows = <
+    { occupied: boolean; shapeName: undefined | ShapeNames }[][]
+  >Array.from({ length: rows }, () =>
+    Array.from({ length: columns }, () => ({ ...defaultCell }))
   )
 
   return {

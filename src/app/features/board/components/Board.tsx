@@ -1,19 +1,11 @@
-import { SHAPES } from "src/tetrominoes"
+import { BoardType } from "../types"
 import BoardCell from "./BoardCell"
 import { StyledContainer } from "./styles/Board.style"
 
 type Props = {
-  board: {
-    rows: {
-      occupied: boolean
-      shapeName: SHAPES | undefined
-    }[][]
-    size: {
-      rows: number
-      columns: number
-    }
-  }
+  board: BoardType
 }
+
 const Board = ({ board }: Props) => {
   return (
     <StyledContainer
