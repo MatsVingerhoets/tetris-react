@@ -1,21 +1,18 @@
 import { useAtom } from "jotai"
 import { KeyboardEvent } from "react"
 import { playerAtom } from "src/app/features/game/states"
-import { BoardType } from "../../board/types"
+import { useInterval } from "src/app/hooks/useInterval"
+import { boardAtom } from "../../board/states"
 import { gameStateAtom } from "../../gameOver/states"
 import { GameStateType } from "../../gameOver/types"
-import { GameStatsType } from "../../gameStats/types"
 import { Action } from "../types"
 import { actionForKey, Controls, playerController } from "../utils"
 
-type Props = {
-  board: BoardType
-  gameStats: GameStatsType
-}
-
-const GameController = ({ board, gameStats }: Props) => {
+const GameController = () => {
+  const [board] = useAtom(boardAtom)
   const [player, setPlayer] = useAtom(playerAtom)
   const [_, setGameState] = useAtom(gameStateAtom)
+  useInterval(() => handleInput({ action: Action.SLOWDROP }), 1000)
   const onKeyUp = ({ code }: KeyboardEvent<HTMLInputElement>) => {
     const typedActionString = code as keyof typeof Controls
     const action = actionForKey(typedActionString)
@@ -29,7 +26,7 @@ const GameController = ({ board, gameStats }: Props) => {
     handleInput({ action })
   }
 
-  const handleInput = ({ action }) => {
+  const handleInput = ({ action }: { action: Action }) => {
     playerController({
       action, board, player, setPlayer, setGameState
     })

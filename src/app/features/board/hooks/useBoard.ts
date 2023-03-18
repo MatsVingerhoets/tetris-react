@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react"
+import { useAtom } from "jotai"
+import { useEffect } from "react"
 import { Player } from "src/app/features/game/states"
-import { buildBoard, nextBoard } from "../utils"
+import { boardAtom } from "../states"
+import { nextBoard } from "../utils"
 
 type Props = {
   rows: number
@@ -10,14 +12,11 @@ type Props = {
   addLinesCleared: () => void
 }
 export const useBoard = ({
-  rows,
-  columns,
   player,
   resetPlayer,
   addLinesCleared
 }: Props) => {
-  const [board, setBoard] = useState(buildBoard({ rows, columns }))
-
+  const [_, setBoard] = useAtom(boardAtom)
   useEffect(() => {
     setBoard(previousBoard =>
       nextBoard({
@@ -28,5 +27,5 @@ export const useBoard = ({
       })
     )
   }, [player, resetPlayer, addLinesCleared])
-  return { board, setBoard, resetPlayer }
+  return { resetPlayer }
 }

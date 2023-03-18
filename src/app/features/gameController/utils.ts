@@ -101,7 +101,6 @@ const attemptMovement = ({ board, action, player, setGameState, setPlayer }: Pro
 
 export const playerController = ({ action, board, player, setPlayer, setGameState }: Props) => {
   if (!action) return
-  console.log({ action })
   if (action === Action.ROTATE) {
     attemptRotation({ board, player, setPlayer })
   } else {

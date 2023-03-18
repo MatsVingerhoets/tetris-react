@@ -1,12 +1,8 @@
-type Props = {
-  gameStats: {
-    level: number,
-    points: number,
-    linesCompleted: number,
-    linesPerLevel: number
-  }
-}
-const GameStats = ({ gameStats }: Props) => {
+import { useAtom } from "jotai"
+
+import { gameStatsAtom } from "../states"
+const GameStats = () => {
+  const [gameStats, setGameStats] = useAtom(gameStatsAtom)
   const { level, points, linesCompleted, linesPerLevel } = gameStats
   const linesToLevel = linesPerLevel - linesCompleted
   return (

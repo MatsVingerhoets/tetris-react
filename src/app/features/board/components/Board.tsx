@@ -1,12 +1,10 @@
-import { BoardType } from "../types"
+import { useAtom } from "jotai"
+import { boardAtom } from "../states"
 import BoardCell from "./BoardCell"
 import { StyledContainer } from "./styles/Board.style"
 
-type Props = {
-  board: BoardType
-}
-
-const Board = ({ board }: Props) => {
+const Board = () => {
+  const [board] = useAtom(boardAtom)
   return (
     <StyledContainer
       rows={board.size.rows}

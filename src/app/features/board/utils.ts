@@ -95,7 +95,6 @@ export const isWithinBoard = ({ board, position, shape }: FunctionProps) => {
 }
 
 export const hasCollision = ({ board, position, shape }: FunctionProps) => {
-  console.log({ position, shape })
   for (let y = 0; y < shape.length; y++) {
     const row = y + position.row
     for (let x = 0; x < shape[y].length; x++) {

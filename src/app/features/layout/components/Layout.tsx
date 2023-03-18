@@ -14,10 +14,10 @@ type Props = {
   columns: number
 }
 const Layout = ({ rows, columns }: Props) => {
-  const [gameStats, addLinesCleared] = useGameStats()
+  const [addLinesCleared] = useGameStats()
   const [player] = useAtom(playerAtom)
   const { resetPlayer } = usePlayer()
-  const { board } = useBoard({
+  useBoard({
     rows,
     columns,
     player,
@@ -29,15 +29,15 @@ const Layout = ({ rows, columns }: Props) => {
       <div className="flex justify-center content-center flex-wrap">
         <div className="w-32 flex flex-col justify-between">
           <HoldBlock />
-          <GameStats gameStats={gameStats} />
+          <GameStats />
         </div>
-        <Board board={board} />
+        <Board />
         <div className="w-32 flex flex-col justify-between">
           <NextBlocks tetrominoes={player.tetrominoes} />
         </div>
       </div>
       <div className="flex mt-2 justify-center">
-        <GameController board={board} gameStats={gameStats} />
+        <GameController />
       </div>
     </>
   )
