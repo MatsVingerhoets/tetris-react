@@ -5,7 +5,7 @@ import { HoldBlock } from "src/app/features/HoldBlock"
 import { useBoard } from "src/app/features/board/hooks/useBoard"
 import { useGameStats } from "src/app/features/gameStats/hooks/useGameStats"
 import { useAtom } from "jotai"
-import { playerAtom } from "src/app/features/game/states"
+import { playerWithTetrominoesAtom } from "src/app/features/game/states"
 import { usePlayer } from "src/app/features/game/hooks/useGame"
 import { GameController } from "src/app/features/gameController"
 
@@ -15,13 +15,13 @@ type Props = {
 }
 const Layout = ({ rows, columns }: Props) => {
   const [addLinesCleared] = useGameStats()
-  const [player] = useAtom(playerAtom)
-  const { resetPlayer } = usePlayer()
+  const [player] = useAtom(playerWithTetrominoesAtom)
+  const { newPlayer } = usePlayer()
   useBoard({
     rows,
     columns,
     player,
-    resetPlayer,
+    newPlayer,
     addLinesCleared
   })
   return (
@@ -33,7 +33,7 @@ const Layout = ({ rows, columns }: Props) => {
         </div>
         <Board />
         <div className="w-32 flex flex-col justify-between">
-          <NextBlocks tetrominoes={player.tetrominoes} />
+          <NextBlocks />
         </div>
       </div>
       <div className="flex mt-2 justify-center">

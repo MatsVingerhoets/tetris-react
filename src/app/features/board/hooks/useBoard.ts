@@ -8,12 +8,12 @@ type Props = {
   rows: number
   columns: number
   player: Player
-  resetPlayer: () => void
+  newPlayer: () => void
   addLinesCleared: () => void
 }
 export const useBoard = ({
   player,
-  resetPlayer,
+  newPlayer,
   addLinesCleared
 }: Props) => {
   const [_, setBoard] = useAtom(boardAtom)
@@ -22,10 +22,10 @@ export const useBoard = ({
       nextBoard({
         board: previousBoard,
         player,
-        resetPlayer,
+        newPlayer,
         addLinesCleared
       })
     )
-  }, [player, resetPlayer, addLinesCleared])
-  return { resetPlayer }
+  }, [player, newPlayer, addLinesCleared])
+  return { newPlayer }
 }

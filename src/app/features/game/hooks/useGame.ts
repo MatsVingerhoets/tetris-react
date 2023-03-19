@@ -1,14 +1,17 @@
 import { useAtom } from "jotai"
 import { useCallback } from "react"
+import { newTetrominoesList, tetrominoesAtom } from "../../nextBlocks/states"
 import { playerAtom } from "../states"
 import { buildPlayer } from "../utils"
 
 export const usePlayer = () => {
-  const [player, setPlayer] = useAtom(playerAtom)
+  const [tetrominoes, setTetrominoes] = useAtom(tetrominoesAtom)
+  const [, setPlayer] = useAtom(playerAtom)
 
-  const resetPlayer = useCallback(() => {
-    setPlayer(buildPlayer(player))
+  const newPlayer = useCallback(() => {
+    setTetrominoes(newTetrominoesList(tetrominoes))
+    setPlayer(buildPlayer())
   }, [])
 
-  return { resetPlayer }
+  return { newPlayer }
 }

@@ -1,5 +1,5 @@
-import { atom } from "jotai"
+import { atomWithReset } from "jotai/utils"
 import { BoardType } from "./types"
 import { buildBoard } from "./utils"
 
-export const boardAtom = atom<BoardType>(buildBoard({ rows: 18, columns: 10 }))
+export const boardAtom = atomWithReset<BoardType>(buildBoard({ rows: 18, columns: 10 }))

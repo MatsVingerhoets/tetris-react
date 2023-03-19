@@ -12,7 +12,7 @@ type buildBoardProps = {
 type nextBoardProps = {
   board: BoardType
   player: Player
-  resetPlayer: () => void
+  newPlayer: () => void
   addLinesCleared: () => void
 }
 
@@ -48,26 +48,27 @@ export const buildBoard = ({ rows, columns }: buildBoardProps) => {
 export const nextBoard = ({
   board,
   player,
-  resetPlayer,
+  newPlayer,
   addLinesCleared
 }: nextBoardProps) => {
-  const { tetromino, position } = player
+  const { currentTetromino, position } = player
 
   // checks if next cell already has piece there, so it does not replace that cell
   const calculateRows = board.rows.map(row =>
     row.map(cell => (cell.occupied ? cell : { ...defaultCell }))
   )
+
   const newRows = transferToBoard({
-    shapeName: tetromino.shapeName,
+    shapeName: currentTetromino.shapeName,
     isOccupied: player.collided,
     position,
     rows: calculateRows,
-    shape: tetromino.shape
+    shape: currentTetromino.shape
   })
 
-  //if we collide with bottom, reset the player
+  //if we collide with bottom, reset the player and move the preview
   if (player.collided || player.isFastDropping) {
-    resetPlayer()
+    newPlayer()
   }
   return { rows: newRows, size: { ...board.size } }
 }
