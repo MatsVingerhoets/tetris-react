@@ -9,7 +9,7 @@ type Props = {
   columns: number
   player: Player
   newPlayer: () => void
-  addLinesCleared: () => void
+  addLinesCleared: (lines: number) => void
 }
 export const useBoard = ({
   player,

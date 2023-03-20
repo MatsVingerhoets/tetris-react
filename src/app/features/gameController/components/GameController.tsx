@@ -29,6 +29,7 @@ const GameController = () => {
   const [gameStats] = useAtom(gameStatsAtom)
   const resetBoard = useResetAtom(boardAtom)
   const resetPlayer = useResetAtom(playerAtom)
+  const resetGameStats = useResetAtom(gameStatsAtom)
 
   const [dropTime, pauseDropTime, resumeDropTime] = useDropTime({
     gameStats
@@ -65,7 +66,8 @@ const GameController = () => {
       setGameState,
       resetBoard,
       resetPlayer,
-      setTetrominoes
+      setTetrominoes,
+      resetGameStats
     })
   }
   return (

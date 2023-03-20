@@ -14,7 +14,7 @@ type nextBoardProps = {
   board: BoardType
   player: Player
   newPlayer: () => void
-  addLinesCleared: () => void
+  addLinesCleared: (lines: number) => void
 }
 
 type FunctionProps = {
@@ -102,7 +102,11 @@ export const nextBoard = ({
   // Check for cleared lines
   const blankRow = rows[0].map(() => ({ ...defaultCell }))
   let linesCleared = 0
-  rows = rows.reduce((acc, row) => {
+  rows = rows.reduce((acc: {
+    occupied: boolean;
+    shapeName: ShapeNames | undefined;
+    ghost: boolean;
+  }[][], row) => {
     if (row.every(column => column.occupied)) {
       linesCleared++
       acc.unshift([...blankRow])
@@ -113,6 +117,7 @@ export const nextBoard = ({
     return acc
   }, [])
   if (linesCleared > 0) {
+    console.log({ linesCleared })
     addLinesCleared(linesCleared)
   }
   //if we collide with bottom, reset the player and move the preview

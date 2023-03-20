@@ -19,6 +19,7 @@ type Props = {
   setTetrominoes: (update: SetStateAction<Tetromino[]>) => void
   resetBoard: () => void
   resetPlayer: () => void
+  resetGameStats: () => void
 }
 type MovePlayerProps = {
   board: BoardType
@@ -76,7 +77,7 @@ const attemptRotation = ({
   setTetrominoes
 }: Omit<
   Props,
-  "action" | "setPlayer" | "setGameState" | "resetBoard" | "resetPlayer"
+  "action" | "setPlayer" | "setGameState" | "resetBoard" | "resetPlayer" | "resetGameStats"
 >) => {
   const rotatedShape = rotate({
     piece: player.currentTetromino.shape,
@@ -105,7 +106,8 @@ const attemptMovement = ({
   setGameState,
   setPlayer,
   resetBoard,
-  resetPlayer
+  resetPlayer,
+  resetGameStats
 }: Omit<Props, "setTetrominoes">) => {
   const delta = { row: 0, column: 0 }
   let isFastDropping = false
@@ -124,11 +126,11 @@ const attemptMovement = ({
     shape: player.currentTetromino.shape,
     board
   })
-  console.log({ collided })
   const isGameOver = collided && player.position.row === 0
   if (isGameOver) {
     resetBoard()
     resetPlayer()
+    resetGameStats()
     setGameState(GameStateType.GAMEOVER)
   } else {
     setPlayer({
@@ -147,7 +149,8 @@ export const playerController = ({
   setGameState,
   resetBoard,
   resetPlayer,
-  setTetrominoes
+  setTetrominoes,
+  resetGameStats
 }: Props) => {
   if (!action) return
   if (action === Action.ROTATE) {
@@ -160,7 +163,8 @@ export const playerController = ({
       setGameState,
       setPlayer,
       resetBoard,
-      resetPlayer
+      resetPlayer,
+      resetGameStats
     })
   }
 }
