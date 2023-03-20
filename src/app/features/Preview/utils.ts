@@ -10,8 +10,10 @@ type TransferToBoardProps = {
   rows: {
     occupied: boolean
     shapeName: ShapeNames | undefined
+    ghost: boolean
   }[][]
   shape: Shape
+  isGhost: boolean
 }
 
 export const transferToBoard = ({
@@ -19,15 +21,15 @@ export const transferToBoard = ({
   isOccupied,
   position,
   rows,
-  shape
+  shape,
+  isGhost
 }: TransferToBoardProps) => {
   shape.forEach((row, y) => {
     row.forEach((cell, x) => {
       if (cell) {
-        const occupied = isOccupied
         const _y = y + position.row
         const _x = x + position.column
-        rows[_y][_x] = { occupied, shapeName }
+        rows[_y][_x] = { ghost: isGhost, occupied: isOccupied, shapeName }
       }
     })
   })
@@ -40,4 +42,3 @@ export const randomTetromino = (): Tetromino => {
   const key = keys[index]
   return TETROMINOES[key]
 }
-

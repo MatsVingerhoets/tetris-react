@@ -17,6 +17,7 @@ const Preview = ({ tetromino, index }: Props) => {
     isOccupied: false,
     position: { row: 0, column: 0 },
     rows: board.rows,
+    isGhost: false,
     shape
   })
   return (

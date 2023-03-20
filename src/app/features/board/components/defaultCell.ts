@@ -1,5 +1,6 @@
 const defaultCell = {
   occupied: false,
-  shapeName: undefined
+  shapeName: undefined,
+  ghost: false
 }
 export default defaultCell

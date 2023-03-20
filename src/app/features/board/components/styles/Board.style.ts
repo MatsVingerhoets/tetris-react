@@ -6,8 +6,13 @@ export const StyledContainer = styled.div<{ rows: number; cols: number }>`
   grid-template-rows: ${({ rows }) => `repeat(${rows}, minmax(0 ,1fr))`};
 `
 
-export const StyledCell = styled.div<{ tetromino: ShapeNames | undefined }>`
-  background-color: ${({ tetromino }) => getCellColor(tetromino)};
+export const StyledCell = styled.div<{
+  tetromino: ShapeNames | undefined
+  ghost: boolean
+}>`
+  background-color: ${({ tetromino, ghost }) =>
+    ghost ? "rgba(0, 0, 0, 0.9);" : getCellColor(tetromino)};
+  border: ${({ ghost }) => (ghost ? "2px solid rgba(255,255,255, 0.4)" : "")};
 `
 const getCellColor = (tetromino: ShapeNames | undefined) => {
   switch (tetromino) {
